@@ -3,7 +3,7 @@ data "yandex_compute_image" "os_image" {
 }
 
 locals {
-  ssh_public_key = file(pathexpand("~/.ssh/id_ed25519.pub"))
+  ssh_public_key = file(pathexpand(var.ssh_public_key_path))
 }
 
 resource "yandex_compute_instance" "db" {
@@ -22,7 +22,7 @@ resource "yandex_compute_instance" "db" {
     initialize_params {
       image_id = data.yandex_compute_image.os_image.id
       size     = each.value.disk_volume
-      type     = "network-hdd"
+      type     = var.db_disk_type
     }
   }
 

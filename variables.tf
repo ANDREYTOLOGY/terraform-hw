@@ -39,6 +39,12 @@ variable "ssh_user" {
   default     = "ubuntu"
 }
 
+variable "ssh_public_key_path" {
+  type        = string
+  description = "Path to public SSH key"
+  default     = "~/.ssh/id_ed25519.pub"
+}
+
 variable "image_family" {
   type        = string
   description = "Image family for instances"
@@ -58,4 +64,94 @@ variable "each_vm" {
     { vm_name = "main", cpu = 2, ram = 4, disk_volume = 20 },
     { vm_name = "replica", cpu = 4, ram = 8, disk_volume = 30 },
   ]
+}
+
+variable "sg_name" {
+  type        = string
+  description = "Security group name"
+  default     = "example_dynamic"
+}
+
+
+variable "web_count" {
+  type        = number
+  default     = 2
+}
+
+variable "web_resources" {
+  type = object({
+    cores  = number
+    memory = number
+  })
+  default = {
+    cores  = 2
+    memory = 2
+  }
+}
+
+variable "web_boot_disk" {
+  type = object({
+    size = number
+    type = string
+  })
+  default = {
+    size = 10
+    type = "network-hdd"
+  }
+}
+
+variable "db_disk_type" {
+  type    = string
+  default = "network-hdd"
+}
+
+variable "storage_name" {
+  type    = string
+  default = "storage"
+}
+
+variable "storage_disks" {
+  type = object({
+    count = number
+    size  = number
+    type  = string
+  })
+  default = {
+    count = 3
+    size  = 1
+    type  = "network-hdd"
+  }
+}
+
+variable "storage_resources" {
+  type = object({
+    cores  = number
+    memory = number
+  })
+  default = {
+    cores  = 2
+    memory = 2
+  }
+}
+
+variable "storage_boot_disk" {
+  type = object({
+    size = number
+    type = string
+  })
+  default = {
+    size = 10
+    type = "network-hdd"
+  }
+}
+
+variable "storage_nat" {
+  type    = bool
+  default = true
+}
+
+variable "metadata" {
+  type        = map(string)
+  description = "Metadata for instances"
+  default     = {}
 }

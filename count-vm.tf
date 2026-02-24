@@ -1,6 +1,6 @@
 
 resource "yandex_compute_instance" "web" {
-  count = 2
+  count = var.web_count
 
   name     = "web-${count.index + 1}"
   hostname = "web-${count.index + 1}"
@@ -9,15 +9,15 @@ resource "yandex_compute_instance" "web" {
   depends_on = [yandex_compute_instance.db]
 
   resources {
-    cores  = 2
-    memory = 2
+    cores  = var.web_resources.cores
+    memory = var.web_resources.memory
   }
 
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.os_image.id
-      size     = 10
-      type     = "network-hdd"
+      size     = var.web_boot_disk.size
+      type     = var.web_boot_disk.type
     }
   }
 
