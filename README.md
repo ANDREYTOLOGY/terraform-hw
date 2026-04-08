@@ -8,6 +8,8 @@ Cкриншот autodetect конфигурации
  Cкриншот первой сборки master  
 ![terraform 1](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/teamcity2.png)  
 
+сборка по ветке master, то должен происходит mvn clean deploy, иначе mvn clean test
+![terraform 1](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/teamcity3.png)  
 
 скриншот консоли c тем же внешним ip-адресом  
 ![terraform 2](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/terraform2-2.png)  
