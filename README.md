@@ -1,16 +1,13 @@
-# Домашнее задание к занятию "`Основы Terraform. Yandex Cloud`" - `Чернышов Андрей`
+# Домашнее задание занятию 11 `«Teamcity»` - `Чернышов Андрей`
 
-### Задание 1
 
-Для успешного развёртывания ВМ были внесены следующие исправления:  
-1. Исправление значения ```platform_id``` , присутствовала орфографическая ошибка в слове standard (было standart).  
-2. API Yandex Cloud сообщил, что платформа ```standard-v4``` недоступна в используемой зоне/квоте. В результате была выбрана доступная платформа: ```platform_id = "standard-v3" ``` 
-3. Исправление параметра ```core_fraction```. Для платформы ```standard-v3``` допустимы только значения 20, 50, 100. Было выбрано 20.
-4. На платформе standard-v3 нельзя использовать 1 ядро. Минимально допустимое значение — 2 ядра. поставил значение: ```cores  = 2 memory = 2```.  
-Объём памяти также был увеличен, поскольку в Yandex Cloud он связан с числом ядер и должен соответствовать допустимым комбинациям ресурсов.  
 
-Cкриншот ЛК Yandex Cloud с созданной ВМ, где видно внешний ip-адрес  
-![terraform 1](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/terraform2-1.png)  
+Cкриншот autodetect конфигурации
+![terraform 1](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/teamcity1.png)  
+ 
+ Cкриншот первой сборки master  
+![terraform 1](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/teamcity2.png)  
+
 
 скриншот консоли c тем же внешним ip-адресом  
 ![terraform 2](https://github.com/ANDREYTOLOGY/terraform-hw/blob/main/img/terraform2-2.png)  
